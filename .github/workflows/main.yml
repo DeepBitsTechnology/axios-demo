@@ -1,0 +1,17 @@
+name: Main
+
+on:  
+  push:
+    tags:
+      - '*'
+
+jobs:
+  deepbits-scan:
+    runs-on: ubuntu-latest
+    outputs:
+      SCAN_BADGE: ${{ steps.deepbits-scan.outputs.DEEPBITS_BADGE }}
+      DEEPSCA_BRANCH_LINK: ${{ steps.deepbits-scan.outputs.DEEPSCA_BRANCH }}
+      DEEPSCA_REPO_LINK: ${{ steps.deepbits-scan.outputs.DEEPSCA_REPO }}
+    steps:
+      - uses: DeepBitsTechnology/getsbom@v1
+        id: deepbits-scan
